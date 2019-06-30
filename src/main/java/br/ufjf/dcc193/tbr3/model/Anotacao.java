@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -41,6 +43,7 @@ public class Anotacao {
     @JoinColumn
     private Item item;
 
+    
     @ManyToOne
     @JoinColumn
     private Vinculo vinculo;
