@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.revisionsystem;
+package br.ufjf.dcc193.tbr3;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.ufjf.dcc193.revisionsystem.model.Avaliador;
-import br.ufjf.dcc193.revisionsystem.repository.AvaliadorRepository;
+import br.ufjf.dcc193.tbr3.model.Avaliador;
+import br.ufjf.dcc193.tbr3.repository.AvaliadorRepository;
 
 @Controller
 public class HomeController {
