@@ -23,18 +23,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Anotacao {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.SEQUENCE)
+   
     private Long id;
     private String titulo;
     private String descricao;
     private String url;
 
+   
     @DateTimeFormat(pattern = "dd-MM-YY")
     private Date dataDeInicio = null;
     @DateTimeFormat(pattern = "dd-MM-YY")
     private Date dataDeAtualizacao = null;
-
+ 
     @ManyToOne
     @JoinColumn
     private Usuario usuario;
@@ -43,7 +45,7 @@ public class Anotacao {
     @JoinColumn
     private Item item;
 
-    
+
     @ManyToOne
     @JoinColumn
     private Vinculo vinculo;
@@ -129,6 +131,6 @@ public class Anotacao {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-   
+  
 
 }

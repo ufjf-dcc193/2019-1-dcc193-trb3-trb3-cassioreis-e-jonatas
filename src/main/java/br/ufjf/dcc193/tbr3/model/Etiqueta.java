@@ -11,18 +11,21 @@ import javax.persistence.OneToMany;
 @Entity
 public class Etiqueta {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+   @Id
+   @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String titulo;
     private String descricao;
     private String url;
+
 
     @OneToMany(mappedBy = "etiquetaItem")
     private Set<ItemEtiqueta> itemEtiquetas;
 
     @OneToMany(mappedBy = "etiquetaVinculo")
     private Set<VinculoEtiqueta> etiquetaVinculo;
+
+
 
     public Etiqueta(Long id, String titulo, String descricao, String url) {
         this.id = id;
@@ -88,4 +91,6 @@ public class Etiqueta {
         this.etiquetaVinculo = etiquetaVinculo;
     }
     
+
+   
 }

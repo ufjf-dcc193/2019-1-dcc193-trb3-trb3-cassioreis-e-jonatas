@@ -18,6 +18,7 @@ public class Item {
     private Long id;
     private String titulo;
     
+    /*
     @OneToMany(mappedBy = "itemEtiqueta")
     private Set<ItemEtiqueta> itemEtiquetas;
 
@@ -29,13 +30,13 @@ public class Item {
 
     @OneToMany(mappedBy = "vinculoSaida")
     private Set<Vinculo> vinculosSaida;
-
+*/
     public Item() {
     }
 
     public Item(String titulo, Set<ItemEtiqueta> itemEtiquetas) {
         this.titulo = titulo;
-        this.itemEtiquetas = itemEtiquetas;
+ //       this.itemEtiquetas = itemEtiquetas;
     }
 
     public Long getId() {
@@ -53,7 +54,7 @@ public class Item {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-
+/*
     public Set<ItemEtiqueta> getItemEtiquetas() {
         return itemEtiquetas;
     }
@@ -86,6 +87,6 @@ public class Item {
         this.vinculosSaida = vinculosSaida;
     }
 
-    
+    */
     
 }
