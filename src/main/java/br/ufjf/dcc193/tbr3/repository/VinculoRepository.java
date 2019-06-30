@@ -1,8 +1,7 @@
-package br.com.ufjf.dcc193.trab03.Persistence;
-
+package br.ufjf.dcc193.tbr3.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.ufjf.dcc193.trab03.Models.Vinculo;
+import br.ufjf.dcc193.tbr3.model.Vinculo;
 
 public interface VinculoRepository extends JpaRepository<Vinculo, Long>{
 

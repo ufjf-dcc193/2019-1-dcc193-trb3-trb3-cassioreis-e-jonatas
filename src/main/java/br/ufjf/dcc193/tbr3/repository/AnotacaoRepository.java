@@ -1,8 +1,8 @@
-package br.com.ufjf.dcc193.trab03.Persistence;
+package br.ufjf.dcc193.tbr3.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.ufjf.dcc193.trab03.Models.Anotacao;
+import br.ufjf.dcc193.tbr3.model.Anotacao;
 
 public interface AnotacaoRepository extends JpaRepository<Anotacao, Long> {
 

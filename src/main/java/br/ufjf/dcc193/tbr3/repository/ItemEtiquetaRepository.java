@@ -1,9 +1,8 @@
-package br.com.ufjf.dcc193.trab03.Persistence;
-
+package br.ufjf.dcc193.tbr3.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.ufjf.dcc193.trab03.Models.ItemEtiqueta;
+import br.ufjf.dcc193.tbr3.model.ItemEtiqueta;
 
 public interface ItemEtiquetaRepository extends JpaRepository <ItemEtiqueta, Long> {
 
