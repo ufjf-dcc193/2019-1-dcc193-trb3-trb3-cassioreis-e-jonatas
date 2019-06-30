@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <em th:replace="_shared/style :: style"></em>
+  <title>Atividade: Nova</title>
+</head>
+
+<body>
+  <nav th:replace="_shared/menu :: menuLogin"></nav>
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+
+
+      <form th:action="@{do-login.html}" method="post" th:object="${avaliador}">
+        <input type="hidden" class="form-control" th:field="*{id}"/>
+        <input type="hidden" class="form-control" th:field="*{nome}" value="notblank"/>
+        <div class="form-group">
+            <label>Email: <input type="text" class="form-control" th:field="*{email}"></label>
+            <strong th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></strong>
+        </div>
+        <div class="form-group">
+          <label>Password: <input type="password" class="form-control" th:field="*{password}"></label>
+          <strong th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></strong>
+      </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary my-2" type="submit" value = "Entrar" />
+        </div>
+        <strong th:text="${errorMessage}" ></strong>
+    </form>
+    
+
+</div>
+</div>
+
+
+<div th:replace="_shared/scripts :: scripts"></div>
+</body>
