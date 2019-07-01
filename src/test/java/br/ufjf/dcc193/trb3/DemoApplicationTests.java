@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.revisionsystem;
+package br.ufjf.dcc193.trb3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
