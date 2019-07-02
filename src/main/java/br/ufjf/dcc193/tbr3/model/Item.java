@@ -1,6 +1,7 @@
 package br.ufjf.dcc193.tbr3.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,21 +21,34 @@ public class Item {
     private String titulo;
     
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)  
-    private Set<Anotacao> anotacoes;
+    private List<Anotacao> anotacoes;
     @ManyToMany
     @JoinTable(name = "etiquetas")
-    private Set<Etiqueta> etiquetas;
+    private List<Etiqueta> etiquetas;
     @OneToMany(mappedBy = "itemOrigem", cascade = CascadeType.ALL)
-    private Set<Vinculo> vinculosOrigem;
+    private List<Vinculo> vinculosOrigem;
     @OneToMany(mappedBy = "itemDestino", cascade = CascadeType.ALL)
-    private Set<Vinculo> vinculosDestino;
+    private List<Vinculo> vinculosDestino;
     
     
     public Item() {
     }
+    public Item(boolean instanciarListas) {
+        if (instanciarListas){
+            instanciarListas();
+        }
+    }
+
+    private void instanciarListas(){
+        anotacoes = new ArrayList<Anotacao>();
+        etiquetas = new ArrayList<Etiqueta>();
+        vinculosOrigem = new ArrayList<Vinculo>();
+        vinculosDestino = new ArrayList<Vinculo>();
+    }
 
     public Item(String titulo) {
         this.titulo = titulo;
+        instanciarListas();
     }
 
     public Long getId() {
@@ -53,39 +67,54 @@ public class Item {
         this.titulo = titulo;
     }
 
-    public Set<Anotacao> getAnotacoes() {
+    public List<Anotacao> getAnotacoes() {
         return anotacoes;
     }
 
-    public void setAnotacoes(Set<Anotacao> anotacoes) {
+    public void setAnotacoes(List<Anotacao> anotacoes) {
         this.anotacoes = anotacoes;
     }
 
-    public Set<Etiqueta> getEtiquetas() {
+    public List<Etiqueta> getEtiquetas() {
         return etiquetas;
     }
 
-    public void setEtiquetas(Set<Etiqueta> etiquetas) {
+    public void setEtiquetas(List<Etiqueta> etiquetas) {
         this.etiquetas = etiquetas;
     }
 
-    public Set<Vinculo> getVinculosOrigem() {
+    public List<Vinculo> getVinculosOrigem() {
         return vinculosOrigem;
     }
 
-    public void setVinculosOrigem(Set<Vinculo> vinculosOrigem) {
+    public void setVinculosOrigem(List<Vinculo> vinculosOrigem) {
         this.vinculosOrigem = vinculosOrigem;
     }
 
-    public Set<Vinculo> getVinculosDestino() {
+    public List<Vinculo> getVinculosDestino() {
         return vinculosDestino;
     }
 
-    public void setVinculosDestino(Set<Vinculo> vinculosDestino) {
+    public void setVinculosDestino(List<Vinculo> vinculosDestino) {
         this.vinculosDestino = vinculosDestino;
     }
     
+    public void addAnotacao(Anotacao a){
+        anotacoes.add(a);
+    }
+    
+    public void addEtiqueta(Etiqueta a){
+        etiquetas.add(a);
+    }
     
     
+    public void addVinculoOrigem(Vinculo a){
+        vinculosOrigem.add(a);
+    }
+    
+    
+    public void addVinculoDestino(Vinculo a){
+        vinculosDestino.add(a);
+    }
     
 }

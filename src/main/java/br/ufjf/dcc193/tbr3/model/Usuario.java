@@ -1,6 +1,7 @@
 package br.ufjf.dcc193.tbr3.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,12 +21,13 @@ public class Usuario {
     private String chave;
 
     @OneToMany(mappedBy = "usuario")
-    private Set<Anotacao> anotacoes;
+    private List<Anotacao> anotacoes;
 
     public Usuario (String email, String chave)
     {
         this.email = email;
         this.chave = chave;
+        instanciarListas();
     }
 
     public Usuario(String nome, String descricao, String email, String chave) {
@@ -33,10 +35,20 @@ public class Usuario {
         this.descricao = descricao;
         this.email = email;
         this.chave = chave;
+        instanciarListas();
     }
 
     public Usuario(){
 
+    }
+    public Usuario(boolean instanciarListas) {
+        if (instanciarListas){
+            instanciarListas();
+        }
+    }
+
+    private void instanciarListas(){
+        anotacoes = new ArrayList<Anotacao>();
     }
 
     public Long getId() {
@@ -79,11 +91,11 @@ public class Usuario {
         this.chave = chave;
     }
 
-    public Set<Anotacao> getAnotacoes() {
+    public List<Anotacao> getAnotacoes() {
         return anotacoes;
     }
 
-    public void setAnotacoes(Set<Anotacao> anotacoes) {
+    public void setAnotacoes(List<Anotacao> anotacoes) {
         this.anotacoes = anotacoes;
     }
 

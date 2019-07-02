@@ -1,6 +1,7 @@
 package br.ufjf.dcc193.tbr3.model;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,11 +26,11 @@ public class Vinculo {
     private Item itemDestino;
 
     @OneToMany(mappedBy = "vinculo")
-    private Set<Anotacao> anotacoes;
+    private List<Anotacao> anotacoes;
 
     @ManyToMany
     @JoinTable(name = "etiquetas")
-    private Set<Etiqueta> etiquetas;
+    private List<Etiqueta> etiquetas;
 
     public Long getId() {
         return id;
@@ -38,16 +39,21 @@ public class Vinculo {
     public void setId(Long id) {
         this.id = id;
     }
-    public Set<Anotacao> getAnotacoes() {
+    public List<Anotacao> getAnotacoes() {
         return anotacoes;
     }
 
-    public void setAnotacoes(Set<Anotacao> anotacoes) {
+    public void setAnotacoes(List<Anotacao> anotacoes) {
         this.anotacoes = anotacoes;
     } 
 
     public Vinculo() {
-
+    }
+    public Vinculo(boolean instanciarListas) {
+        if (instanciarListas){
+            anotacoes = new ArrayList<Anotacao>();
+            etiquetas = new ArrayList<Etiqueta>();
+        }
     }
 
     public Item getItemOrigem() {
@@ -66,16 +72,22 @@ public class Vinculo {
         this.itemDestino = itemDestino;
     }
 
-    public Set<Etiqueta> getEtiquetas() {
+    public List<Etiqueta> getEtiquetas() {
         return etiquetas;
     }
 
-    public void setEtiquetas(Set<Etiqueta> etiquetas) {
+    public void setEtiquetas(List<Etiqueta> etiquetas) {
         this.etiquetas = etiquetas;
     }
-
-
+    
+    
+    public void addEtiqueta(Etiqueta e){
+        etiquetas.add(e);
+    }
+    
+    public void addAnotacao(Anotacao a){
+        anotacoes.add(a);
+    }
     
 
-    
 }

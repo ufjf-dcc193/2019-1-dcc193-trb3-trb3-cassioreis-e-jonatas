@@ -1,7 +1,5 @@
 package br.ufjf.dcc193.tbr3.model;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import br.ufjf.dcc193.tbr3.helper.Helper;
 
 /**
  * Revisao
@@ -25,9 +25,9 @@ public class Anotacao {
 
    
     @DateTimeFormat(pattern = "dd-MM-YY")
-    private Date dataDeInicio = null;
+    private String dataDeInicio = null;
     @DateTimeFormat(pattern = "dd-MM-YY")
-    private Date dataDeAtualizacao = null;
+    private String dataDeAtualizacao = null;
  
     @ManyToOne(targetEntity = Usuario.class)
     private Usuario usuario;
@@ -41,11 +41,12 @@ public class Anotacao {
     public Anotacao() {
     }
 
-    public Anotacao(String titulo, String descricao, String url, Date dataDeInicio) {
+    public Anotacao(String titulo, String descricao, String url, String dataDeInicio) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
         this.dataDeInicio = dataDeInicio;
+        atualizaDataDeAtualizacao();
     }
 
     public String getTitulo() {
@@ -64,11 +65,11 @@ public class Anotacao {
         this.url = url;
     }
 
-    public Date getDataDeInicio() {
+    public String getDataDeInicio() {
         return dataDeInicio;
     }
 
-    public void setDataDeInicio(Date dataDeInicio) {
+    public void setDataDeInicio(String dataDeInicio) {
         this.dataDeInicio = dataDeInicio;
     }
 
@@ -80,12 +81,12 @@ public class Anotacao {
         this.id = id;
     }
 
-    public Date getDataDeAtualizacao() {
+    public String getDataDeAtualizacao() {
         return dataDeAtualizacao;
     }
 
-    public void setDataDeAtualizacao(Date dataDeAtualizacao) {
-        this.dataDeAtualizacao = dataDeAtualizacao;
+    public void atualizaDataDeAtualizacao(){
+        dataDeAtualizacao = Helper.getDataAtualFormatada();
     }
 
     public Usuario getUsuario() {

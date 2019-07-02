@@ -1,5 +1,6 @@
 package br.ufjf.dcc193.tbr3.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,10 +41,21 @@ public class Etiqueta {
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
+        instanciarListas();
     }
 
     public Etiqueta() {
     }
+    public Etiqueta(boolean instanciarListas) {
+        if (instanciarListas){
+            instanciarListas();
+        }
+    }
+
+    private void instanciarListas(){
+        itens = new ArrayList<Item>();
+            vinculos = new ArrayList<Vinculo>();
+    } 
 
     public Long getId() {
         return id;
@@ -94,7 +106,13 @@ public class Etiqueta {
     }
     
     
+    public void addVinculo(Vinculo v){
+        vinculos.add(v);
+    }
     
+    public void addItem(Item i){
+        itens.add(i);
+    }
 
    
 }
