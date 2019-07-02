@@ -1,17 +1,12 @@
 package br.ufjf.dcc193.tbr3.model;
 
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class Etiqueta {
