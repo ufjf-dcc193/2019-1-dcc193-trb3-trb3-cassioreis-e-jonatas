@@ -54,24 +54,32 @@ public class HomeController {
         StringBuilder sb = new StringBuilder();
         sb.append("<BR>");
         sb.append("USUARIOS");
+        sb.append("<BR>");
+        sb.append("<BR>");
         for (Usuario usuario: usuarios) {
             sb.append(usuario.toString());
             sb.append(";");
         }
         sb.append("<BR>");
         sb.append("ITENS");
+        sb.append("<BR>");
+        sb.append("<BR>");
         for (Item item: itens) {
             sb.append(item.toString());
             sb.append(";");
         }
         sb.append("<BR>");
         sb.append("ETIQUETAS");
+        sb.append("<BR>");
+        sb.append("<BR>");
         for (Etiqueta etiqueta: etiquetas) {
             sb.append(etiqueta.toString());
             sb.append(";");
         }
         sb.append("<BR>");
         sb.append("ANOTACOES");
+        sb.append("<BR>");
+        sb.append("<BR>");
         for (Anotacao anotacao: anotacoes) {
             sb.append(anotacao.toString());
             sb.append(";");
