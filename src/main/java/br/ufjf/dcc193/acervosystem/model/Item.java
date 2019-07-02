@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Item {
@@ -18,6 +19,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @NotBlank(message="Título obrigatório")
     private String titulo;
     
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)  

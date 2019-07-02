@@ -1,11 +1,9 @@
 package br.ufjf.dcc193.acervosystem;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import br.ufjf.dcc193.acervosystem.helper.Helper;
 import br.ufjf.dcc193.acervosystem.model.Anotacao;
 import br.ufjf.dcc193.acervosystem.model.Etiqueta;
 import br.ufjf.dcc193.acervosystem.model.Item;
