@@ -19,10 +19,19 @@ import br.ufjf.dcc193.tbr3.repository.AnotacaoRepository;
 
 
 @Controller
+@RequestMapping("/anotacao")
 public class AnotacaoController {
 
     @Autowired
     private AnotacaoRepository repositoryAnotacao;
+
+    @RequestMapping({"", "/", "/index" })
+    public ModelAndView index()
+    {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("listar-anotacao");
+        return mv;
+    }
    
 
     @RequestMapping(value = { "/excluir-anotacao/{id}" }, method = RequestMethod.GET)
@@ -30,16 +39,6 @@ public class AnotacaoController {
         ModelAndView mv = new ModelAndView();
         repositoryAnotacao.deleteById(id);
         return mv;    
-    }
-
-    
-    @RequestMapping(value = {"/cria-anotacao/"}, method = RequestMethod.GET)
-    public ModelAndView editarAnotacao (@PathVariable())
-    {
-        ModelAndView mv = new ModelAndView();
-        Anotacao anotacao = repositoryAnotacao.getOne(id);
-        mv.setViewName("criar-anotacao");
-        return mv;
     }
 
 
@@ -57,7 +56,9 @@ public class AnotacaoController {
     @RequestMapping(value = {"/editar-anotacao"}, method = RequestMethod.POST)
     public ModelAndView realizaEditarAnotacao (@RequestParam(value = "id", required = true) Long id, Anotacao anotacao, HttpSession session)
     {
-      
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("listar-anotacao");
+        return mv;
     }     
 
 
