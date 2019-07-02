@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.tbr3.controller;
+package br.ufjf.dcc193.acervosystem.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.ufjf.dcc193.tbr3.model.Anotacao;
-import br.ufjf.dcc193.tbr3.repository.AnotacaoRepository;
+import br.ufjf.dcc193.acervosystem.model.Anotacao;
+import br.ufjf.dcc193.acervosystem.repository.AnotacaoRepository;
 
 
 

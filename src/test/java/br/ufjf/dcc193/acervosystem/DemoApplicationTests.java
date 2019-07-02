@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.trb3;
+package br.ufjf.dcc193.acervosystem;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

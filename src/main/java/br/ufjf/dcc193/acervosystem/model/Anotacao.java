@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.tbr3.model;
+package br.ufjf.dcc193.acervosystem.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import br.ufjf.dcc193.tbr3.helper.Helper;
+import br.ufjf.dcc193.acervosystem.helper.Helper;
 
 /**
  * Revisao

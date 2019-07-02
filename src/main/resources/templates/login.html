@@ -18,7 +18,7 @@
 
 
 
-      <form th:action="@{do-login.html}" method="post" th:object="${avaliador}">
+      <form th:action="@{do-login}" method="post" th:object="${usuario}">
         <input type="hidden" class="form-control" th:field="*{id}"/>
         <input type="hidden" class="form-control" th:field="*{nome}" value="notblank"/>
         <div class="form-group">

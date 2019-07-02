@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.tbr3.model;
+package br.ufjf.dcc193.acervosystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,32 +9,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @NotBlank(message="Nome obrigatório")
     private String nome;
     private String descricao;
+    @NotBlank(message="E-mail obrigatório")
     private String email;
-    private String chave;
+    @NotBlank(message="Senha obrigatória")
+    private String password;
 
     @OneToMany(mappedBy = "usuario")
     private List<Anotacao> anotacoes;
 
-    public Usuario (String email, String chave)
+    public Usuario (String email, String password)
     {
         this.email = email;
-        this.chave = chave;
+        this.password = password;
         instanciarListas();
     }
 
-    public Usuario(String nome, String descricao, String email, String chave) {
+    public Usuario(String nome, String descricao, String email, String password) {
         this.nome = nome;
         this.descricao = descricao;
         this.email = email;
-        this.chave = chave;
+        this.password = password;
         instanciarListas();
     }
 
@@ -83,12 +88,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getChave() {
-        return chave;
+    public String getPassword() {
+        return password;
     }
 
-    public void setChave(String chave) {
-        this.chave = chave;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Anotacao> getAnotacoes() {

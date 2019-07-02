@@ -1,7 +1,7 @@
-package br.ufjf.dcc193.tbr3.repository;
+package br.ufjf.dcc193.acervosystem.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.ufjf.dcc193.tbr3.model.Item;
+import br.ufjf.dcc193.acervosystem.model.Item;
 
 public interface ItemRepository extends JpaRepository <Item, Long> {
 

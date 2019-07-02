@@ -1,18 +1,18 @@
-package br.ufjf.dcc193.tbr3;
+package br.ufjf.dcc193.acervosystem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.ufjf.dcc193.tbr3.model.Anotacao;
-import br.ufjf.dcc193.tbr3.model.Etiqueta;
-import br.ufjf.dcc193.tbr3.model.Item;
-import br.ufjf.dcc193.tbr3.model.Usuario;
-import br.ufjf.dcc193.tbr3.model.Vinculo;
-import br.ufjf.dcc193.tbr3.repository.AnotacaoRepository;
-import br.ufjf.dcc193.tbr3.repository.EtiquetaRepository;
-import br.ufjf.dcc193.tbr3.repository.ItemRepository;
-import br.ufjf.dcc193.tbr3.repository.UsuarioRepository;
+import br.ufjf.dcc193.acervosystem.model.Anotacao;
+import br.ufjf.dcc193.acervosystem.model.Etiqueta;
+import br.ufjf.dcc193.acervosystem.model.Item;
+import br.ufjf.dcc193.acervosystem.model.Usuario;
+import br.ufjf.dcc193.acervosystem.model.Vinculo;
+import br.ufjf.dcc193.acervosystem.repository.AnotacaoRepository;
+import br.ufjf.dcc193.acervosystem.repository.EtiquetaRepository;
+import br.ufjf.dcc193.acervosystem.repository.ItemRepository;
+import br.ufjf.dcc193.acervosystem.repository.UsuarioRepository;
 
 
 @SpringBootApplication
@@ -33,7 +33,7 @@ public class DemoApplication {
 	}
 
 	public static void popularDadosPrincipais(){
-		Usuario u = new Usuario("Usuário 1","descrição usuário 1","mail@mail.com","1234");
+		Usuario u = new Usuario("Usuario 1","descricao usuario 1","mail@mail.com","1234");
 		
 		Item i = new Item("Obra 1");
 		Item i2 = new Item("Documento 1");

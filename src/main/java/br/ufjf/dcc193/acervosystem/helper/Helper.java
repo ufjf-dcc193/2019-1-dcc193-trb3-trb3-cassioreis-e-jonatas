@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.tbr3.helper;
+package br.ufjf.dcc193.acervosystem.helper;
 
 import java.text.SimpleDateFormat;
 
@@ -6,8 +6,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.ufjf.dcc193.tbr3.model.Usuario;
-import br.ufjf.dcc193.tbr3.repository.UsuarioRepository;
+import br.ufjf.dcc193.acervosystem.model.Usuario;
+import br.ufjf.dcc193.acervosystem.repository.UsuarioRepository;
 
 public class Helper {
 

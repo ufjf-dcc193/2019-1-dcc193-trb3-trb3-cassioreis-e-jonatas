@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.tbr3.controller;
+package br.ufjf.dcc193.acervosystem.controller;
 
 import org.springframework.stereotype.Controller;
 

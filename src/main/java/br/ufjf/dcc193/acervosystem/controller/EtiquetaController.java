@@ -1,4 +1,4 @@
-package br.ufjf.dcc193.tbr3.controller;
+package br.ufjf.dcc193.acervosystem.controller;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.ufjf.dcc193.tbr3.model.Etiqueta;
-import br.ufjf.dcc193.tbr3.repository.EtiquetaRepository;
+import br.ufjf.dcc193.acervosystem.model.Etiqueta;
+import br.ufjf.dcc193.acervosystem.repository.EtiquetaRepository;
 
 
 

@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.5.RELEASE</version>
+		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.ufjf.dcc193</groupId>
-	<artifactId>trb3</artifactId>
+	<artifactId>acervosystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
@@ -36,10 +36,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
