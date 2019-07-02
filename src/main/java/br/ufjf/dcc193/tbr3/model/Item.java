@@ -1,6 +1,5 @@
 package br.ufjf.dcc193.tbr3.model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
