@@ -65,7 +65,6 @@ public class ItemController {
     {
         boolean isInsert = item.getId()==null;
         ModelAndView mv = new ModelAndView();
-        List<ObjectError> errors =  binding.getAllErrors();
         if (binding.hasErrors()) {
             mv.setViewName("item-detalhe");
             mv.addObject("item", item);
