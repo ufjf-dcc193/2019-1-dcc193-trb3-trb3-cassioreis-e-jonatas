@@ -116,5 +116,11 @@ public class Item {
     public void addVinculoDestino(Vinculo a){
         vinculosDestino.add(a);
     }
+
+    @Override
+    public String toString() {
+        return "Item [anotacoes=" + anotacoes + ", etiquetas=" + etiquetas + ", id=" + id + ", titulo=" + titulo
+                + ", vinculosDestino=" + vinculosDestino + ", vinculosOrigem=" + vinculosOrigem + "]";
+    }
     
 }

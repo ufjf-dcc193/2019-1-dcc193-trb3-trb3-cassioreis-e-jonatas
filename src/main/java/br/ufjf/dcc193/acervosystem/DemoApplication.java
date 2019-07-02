@@ -3,6 +3,7 @@ package br.ufjf.dcc193.acervosystem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import br.ufjf.dcc193.acervosystem.model.Anotacao;
 import br.ufjf.dcc193.acervosystem.model.Etiqueta;
@@ -18,17 +19,21 @@ import br.ufjf.dcc193.acervosystem.repository.UsuarioRepository;
 @SpringBootApplication
 public class DemoApplication {
 
-	@Autowired
+	
 	public static UsuarioRepository usuarioRepository;
-	@Autowired
+	
 	public static ItemRepository itemRepository;
-	@Autowired
+	
 	public static EtiquetaRepository etiquetaRepository;
-	@Autowired
+	
 	public static AnotacaoRepository anotacaoRepository;
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
+		usuarioRepository = ctx.getBean(UsuarioRepository.class);
+		itemRepository = ctx.getBean(ItemRepository.class);
+		etiquetaRepository = ctx.getBean(EtiquetaRepository.class);
+		anotacaoRepository = ctx.getBean(AnotacaoRepository.class);
 		popularDadosPrincipais();
 	}
 
@@ -47,22 +52,23 @@ public class DemoApplication {
 		Anotacao a3= new Anotacao("Anotação 3", "Descrição anotação 3", "url-anot3.com.br", "03-07-19");
 		a.setUsuario(u);
 		a2.setUsuario(u);
-
+		
 		Vinculo v = new Vinculo(true);
 		v.setItemOrigem(i);
 		v.setItemDestino(i2);
 		v.addEtiqueta(e3);
 		v.addAnotacao(a3);
-
-		i.addAnotacao(a);
+		
+		/*i.addAnotacao(a);
 		i.addEtiqueta(e);
 		i.addEtiqueta(e2);
-
+		
 		i2.addAnotacao(a2);
 		i2.addEtiqueta(e);
-		i2.addEtiqueta(e2);
+		i2.addEtiqueta(e2); */
 		
-		usuarioRepository.save(u);
+		
+		usuarioRepository.save(u);		
 		anotacaoRepository.save(a);
 		anotacaoRepository.save(a2);
 		anotacaoRepository.save(a3);
@@ -70,7 +76,7 @@ public class DemoApplication {
 		etiquetaRepository.save(e2);
 		etiquetaRepository.save(e3);
 		itemRepository.save(i);
-		itemRepository.save(i2);
+		itemRepository.save(i2); 
 		
 	}
 

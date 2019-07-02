@@ -114,5 +114,11 @@ public class Etiqueta {
         itens.add(i);
     }
 
+    @Override
+    public String toString() {
+        return "Etiqueta [descricao=" + descricao + ", id=" + id + ", itens=" + itens + ", titulo=" + titulo + ", url="
+                + url + ", vinculos=" + vinculos + "]";
+    }
+
    
 }

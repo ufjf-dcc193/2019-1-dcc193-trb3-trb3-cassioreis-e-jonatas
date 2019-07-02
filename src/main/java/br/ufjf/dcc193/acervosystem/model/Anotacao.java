@@ -120,6 +120,13 @@ public class Anotacao {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    @Override
+    public String toString() {
+        return "Anotacao [dataDeAtualizacao=" + dataDeAtualizacao + ", dataDeInicio=" + dataDeInicio + ", descricao="
+                + descricao + ", id=" + id + ", item=" + item + ", titulo=" + titulo + ", url=" + url + ", usuario="
+                + usuario + ", vinculo=" + vinculo + "]";
+    }
   
 
 }

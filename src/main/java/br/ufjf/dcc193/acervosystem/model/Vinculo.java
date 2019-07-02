@@ -88,6 +88,12 @@ public class Vinculo {
     public void addAnotacao(Anotacao a){
         anotacoes.add(a);
     }
+
+    @Override
+    public String toString() {
+        return "Vinculo [anotacoes=" + anotacoes + ", etiquetas=" + etiquetas + ", id=" + id + ", itemDestino="
+                + itemDestino + ", itemOrigem=" + itemOrigem + "]";
+    }
     
 
 }

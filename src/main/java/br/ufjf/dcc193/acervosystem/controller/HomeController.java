@@ -1,5 +1,7 @@
 package br.ufjf.dcc193.acervosystem.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -12,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.ufjf.dcc193.acervosystem.helper.Helper;
-import br.ufjf.dcc193.acervosystem.model.Usuario;
-import br.ufjf.dcc193.acervosystem.repository.UsuarioRepository;
+import br.ufjf.dcc193.acervosystem.model.*;
+import br.ufjf.dcc193.acervosystem.repository.*;
 
 
 @Controller
@@ -21,6 +23,12 @@ public class HomeController {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+	@Autowired
+	ItemRepository itemRepository;
+	@Autowired
+	EtiquetaRepository etiquetaRepository;
+	@Autowired
+	AnotacaoRepository anotacaoRepository;
 
     
     @RequestMapping({ "", "/", "/index" })
@@ -31,7 +39,44 @@ public class HomeController {
             mv.setViewName("index");
         else
             mv.setViewName("index-nologged");
+
+        mv.addObject("objetos",listarTodosOsObjetos());
         return mv;
+    }
+
+    private String listarTodosOsObjetos(){
+
+
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        List<Item> itens = itemRepository.findAll();
+        List<Etiqueta> etiquetas = etiquetaRepository.findAll();
+        List<Anotacao> anotacoes = anotacaoRepository.findAll();
+        StringBuilder sb = new StringBuilder();
+        sb.append("<BR>");
+        sb.append("USUARIOS");
+        for (Usuario usuario: usuarios) {
+            sb.append(usuario.toString());
+            sb.append(";");
+        }
+        sb.append("<BR>");
+        sb.append("ITENS");
+        for (Item item: itens) {
+            sb.append(item.toString());
+            sb.append(";");
+        }
+        sb.append("<BR>");
+        sb.append("ETIQUETAS");
+        for (Etiqueta etiqueta: etiquetas) {
+            sb.append(etiqueta.toString());
+            sb.append(";");
+        }
+        sb.append("<BR>");
+        sb.append("ANOTACOES");
+        for (Anotacao anotacao: anotacoes) {
+            sb.append(anotacao.toString());
+            sb.append(";");
+        }
+        return sb.toString();
     }
 
     

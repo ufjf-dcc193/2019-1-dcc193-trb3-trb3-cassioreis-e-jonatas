@@ -2,7 +2,9 @@ package br.ufjf.dcc193.acervosystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,8 +27,9 @@ public class Usuario {
     @NotBlank(message="Senha obrigatória")
     private String password;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Anotacao> anotacoes;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Set<Anotacao> anotacoes;
+
 
     public Usuario (String email, String password)
     {
@@ -53,7 +56,7 @@ public class Usuario {
     }
 
     private void instanciarListas(){
-        anotacoes = new ArrayList<Anotacao>();
+        //anotacoes = new ArrayList<Anotacao>();
     }
 
     public Long getId() {
@@ -96,12 +99,18 @@ public class Usuario {
         this.password = password;
     }
 
-    public List<Anotacao> getAnotacoes() {
+    public Set<Anotacao> getAnotacoes() {
         return anotacoes;
     }
 
-    public void setAnotacoes(List<Anotacao> anotacoes) {
+    public void setAnotacoes(Set<Anotacao> anotacoes) {
         this.anotacoes = anotacoes;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [anotacoes=" + anotacoes + ", descricao=" + descricao + ", email=" + email + ", id=" + id
+                + ", nome=" + nome + ", password=" + password + "]";
     }
 
 }
