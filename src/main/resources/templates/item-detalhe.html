@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <em th:replace="_shared/style :: style"></em>
+  <title>Detalhe de item</title>
+</head>
+
+<body>
+  <nav th:replace="_shared/menu :: menu"></nav>
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+
+
+      <form th:action="@{salvar}" method="post" th:object="${item}">
+        <input type="hidden" class="form-control" th:field="*{id}"/>
+        <div class="form-group">
+
+          <label>Título: <input type="text" class="form-control" th:field="*{titulo}"></label>
+          <strong th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></strong>
+
+        </div>     
+      
+        <div class="form-group">
+            <input class="btn btn-primary my-2" type="submit" value = "Salvar" />
+            <input  class="btn btn-primary my-2" type="reset" value="Limpar" />
+        </div>
+    </form>
+    
+
+</div>
+</div>
+
+
+<div th:replace="_shared/scripts :: scripts"></div>
+</body>
