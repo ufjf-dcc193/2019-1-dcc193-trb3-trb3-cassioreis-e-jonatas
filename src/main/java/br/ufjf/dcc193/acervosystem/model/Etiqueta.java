@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Etiqueta {
@@ -15,8 +16,11 @@ public class Etiqueta {
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @NotBlank(message="Título obrigatório")
     private String titulo;
+    @NotBlank(message="Descrição obrigatória")
     private String descricao;
+    @NotBlank(message="Url obrigatória")
     private String url;
 
 
