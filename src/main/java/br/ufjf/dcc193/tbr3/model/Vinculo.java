@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -17,16 +19,17 @@ public class Vinculo {
     private Long id;
     
     @ManyToOne
-    private Item vinculoEntrada;
+    private Item itemOrigem;
 
     @ManyToOne
-    private Item vinculoSaida;
+    private Item itemDestino;
 
     @OneToMany(mappedBy = "vinculo")
     private Set<Anotacao> anotacoes;
 
-    @OneToMany(mappedBy = "vinculoEtiqueta")
-    private Set<VinculoEtiqueta> vinculoEtiqueta;
+    @ManyToMany
+    @JoinTable(name = "etiquetas")
+    private Set<Etiqueta> etiquetas;
 
     public Long getId() {
         return id;
@@ -35,23 +38,6 @@ public class Vinculo {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Item getVinculoEntrada() {
-        return vinculoEntrada;
-    }
-
-    public void setVinculoEntrada(Item vinculoEntrada) {
-        this.vinculoEntrada = vinculoEntrada;
-    }
-
-    public Item getVinculoSaida() {
-        return vinculoSaida;
-    }
-
-    public void setVinculoSaida(Item vinculoSaida) {
-        this.vinculoSaida = vinculoSaida;
-    }
-
     public Set<Anotacao> getAnotacoes() {
         return anotacoes;
     }
@@ -64,13 +50,30 @@ public class Vinculo {
 
     }
 
-    public Set<VinculoEtiqueta> getVinculoEtiqueta() {
-        return vinculoEtiqueta;
+    public Item getItemOrigem() {
+        return itemOrigem;
     }
 
-    public void setVinculoEtiqueta(Set<VinculoEtiqueta> vinculoEtiqueta) {
-        this.vinculoEtiqueta = vinculoEtiqueta;
+    public void setItemOrigem(Item itemOrigem) {
+        this.itemOrigem = itemOrigem;
     }
+
+    public Item getItemDestino() {
+        return itemDestino;
+    }
+
+    public void setItemDestino(Item itemDestino) {
+        this.itemDestino = itemDestino;
+    }
+
+    public Set<Etiqueta> getEtiquetas() {
+        return etiquetas;
+    }
+
+    public void setEtiquetas(Set<Etiqueta> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+
 
     
 

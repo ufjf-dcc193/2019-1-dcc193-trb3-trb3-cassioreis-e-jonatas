@@ -14,7 +14,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,9 +22,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Anotacao {
 
-   // @Id
-   // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-   
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)   
     private Long id;
     private String titulo;
     private String descricao;
@@ -37,17 +35,13 @@ public class Anotacao {
     @DateTimeFormat(pattern = "dd-MM-YY")
     private Date dataDeAtualizacao = null;
  
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(targetEntity = Usuario.class)
     private Usuario usuario;
 
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(targetEntity = Item.class)
     private Item item;
 
-
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(targetEntity = Vinculo.class)
     private Vinculo vinculo;
 
     public Anotacao() {

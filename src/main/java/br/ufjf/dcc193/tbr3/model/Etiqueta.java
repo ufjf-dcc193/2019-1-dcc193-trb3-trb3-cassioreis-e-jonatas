@@ -1,12 +1,17 @@
 package br.ufjf.dcc193.tbr3.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class Etiqueta {
@@ -19,11 +24,13 @@ public class Etiqueta {
     private String url;
 
 
-    @OneToMany(mappedBy = "etiquetaItem")
-    private Set<ItemEtiqueta> itemEtiquetas;
+    @ManyToMany
+    @JoinTable(name = "itens")
+    private List<Item> itens;
 
-    @OneToMany(mappedBy = "etiquetaVinculo")
-    private Set<VinculoEtiqueta> etiquetaVinculo;
+    @ManyToMany
+    @JoinTable(name = "vinculos")
+    private List<Vinculo> vinculos;
 
 
 
@@ -75,21 +82,23 @@ public class Etiqueta {
         this.url = url;
     }
 
-    public Set<ItemEtiqueta> getItemEtiquetas() {
-        return itemEtiquetas;
+    public List<Item> getItens() {
+        return itens;
     }
 
-    public void setItemEtiquetas(Set<ItemEtiqueta> itemEtiquetas) {
-        this.itemEtiquetas = itemEtiquetas;
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
     }
 
-    public Set<VinculoEtiqueta> getEtiquetaVinculo() {
-        return etiquetaVinculo;
+    public List<Vinculo> getVinculos() {
+        return vinculos;
     }
 
-    public void setEtiquetaVinculo(Set<VinculoEtiqueta> etiquetaVinculo) {
-        this.etiquetaVinculo = etiquetaVinculo;
+    public void setVinculos(List<Vinculo> vinculos) {
+        this.vinculos = vinculos;
     }
+    
+    
     
 
    
