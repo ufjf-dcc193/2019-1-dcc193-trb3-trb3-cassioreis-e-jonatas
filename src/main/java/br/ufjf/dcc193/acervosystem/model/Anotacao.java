@@ -124,8 +124,7 @@ public class Anotacao {
     @Override
     public String toString() {
         return "Anotacao [dataDeAtualizacao=" + dataDeAtualizacao + ", dataDeInicio=" + dataDeInicio + ", descricao="
-                + descricao + ", id=" + id + ", item=" + item + ", titulo=" + titulo + ", url=" + url + ", usuario="
-                + usuario + ", vinculo=" + vinculo + "]";
+                + descricao + ", id=" + id + "]";
     }
   
 

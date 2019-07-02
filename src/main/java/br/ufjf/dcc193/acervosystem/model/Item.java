@@ -119,8 +119,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item [anotacoes=" + anotacoes + ", etiquetas=" + etiquetas + ", id=" + id + ", titulo=" + titulo
-                + ", vinculosDestino=" + vinculosDestino + ", vinculosOrigem=" + vinculosOrigem + "]";
+        return "Item [id=" + id + ", titulo=" + titulo +"]";
     }
     
 }

@@ -116,8 +116,8 @@ public class Etiqueta {
 
     @Override
     public String toString() {
-        return "Etiqueta [descricao=" + descricao + ", id=" + id + ", itens=" + itens + ", titulo=" + titulo + ", url="
-                + url + ", vinculos=" + vinculos + "]";
+        return "Etiqueta [descricao=" + descricao + ", id=" + id + ", titulo=" + titulo + ", url="
+                + url + "]";
     }
 
    

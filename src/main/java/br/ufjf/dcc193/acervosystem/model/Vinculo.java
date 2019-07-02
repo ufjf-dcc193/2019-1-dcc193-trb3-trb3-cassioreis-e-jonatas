@@ -91,8 +91,7 @@ public class Vinculo {
 
     @Override
     public String toString() {
-        return "Vinculo [anotacoes=" + anotacoes + ", etiquetas=" + etiquetas + ", id=" + id + ", itemDestino="
-                + itemDestino + ", itemOrigem=" + itemOrigem + "]";
+        return "Vinculo [id=" + id + "]";
     }
     
 
