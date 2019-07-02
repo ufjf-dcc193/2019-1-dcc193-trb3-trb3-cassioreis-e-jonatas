@@ -2,12 +2,15 @@ package br.ufjf.dcc193.acervosystem.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,13 +41,14 @@ public class UsuarioController {
         return mv;
     }
 
-    @RequestMapping(value = {"/detalhe/{id}"}, method = RequestMethod.GET)
-    public ModelAndView detalhe (@PathVariable(value = "id", required = true) Long id)
+    @RequestMapping(value = {"/detalhe"}, method = RequestMethod.GET)
+    public ModelAndView detalhe (@RequestParam("id") Long id)
     {
         ModelAndView mv = new ModelAndView();
         Usuario usuario = usuarioRepository.getOne(id);
         mv.addObject("usuario", usuario);
         mv.addObject("id", id);
+        mv.addObject("isInsert", false);
         mv.setViewName("usuario-detalhe");
         return mv;
     }
@@ -54,29 +58,60 @@ public class UsuarioController {
     {
         ModelAndView mv = new ModelAndView();
         mv.addObject("usuario", new Usuario());
+        mv.addObject("isInsert", true);
         mv.setViewName("usuario-detalhe");
         return mv;
     }
 
     @PostMapping(value = "/salvar")
-    public ModelAndView salvar (@Valid Usuario usuario,BindingResult binding)
+    public ModelAndView salvar (@RequestParam(value = "id", required = true) Long id, @Valid Usuario usuario,BindingResult binding)
     {
+        boolean isInsert = usuario.getId()==null;
         ModelAndView mv = new ModelAndView();
+        List<ObjectError> errors =  binding.getAllErrors();
         if (binding.hasErrors()) {
-            mv.setViewName("usuario-detalhe");
-            mv.addObject("usuario", usuario);
-            return mv;
+            String fieldError = "";
+            if (errors.size()==1){
+                fieldError = ((FieldError) errors.get(0)).getField();
+            }
+            if ((!fieldError.equals("password")) || isInsert){
+                mv.setViewName("usuario-detalhe");
+                mv.addObject("usuario", usuario);            
+                mv.addObject("isInsert", isInsert);            
+                return mv;
+            }
         }
-        usuarioRepository.save(usuario);
+        Usuario current;
+        if (isInsert)
+            current = new Usuario();
+        else
+            current = usuarioRepository.getOne(id);
+        current.setDescricao(usuario.getDescricao());
+        current.setNome(usuario.getNome());
+        current.setEmail(usuario.getEmail());
+        if (usuario.getPassword().length()>0)
+            current.setPassword(usuario.getPassword());
+        usuarioRepository.save(current);
         mv.setViewName("redirect:listar");
         return mv;
-    }   
+    }
+    
 
-    @RequestMapping(value = { "/excluir/{id}" }, method = RequestMethod.GET)
-    public ModelAndView carregaExcluir(@PathVariable(value = "id", required = true) Long id) {
+    @RequestMapping(value = { "/excluir" }, method = RequestMethod.GET)
+    public ModelAndView excluir(@RequestParam("id") Long id, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
-        usuarioRepository.deleteById(id);
-        mv.setViewName("redirect:/listar");
+        Usuario currentUser = Helper.getUsuarioLogado(request, usuarioRepository);
+        if (currentUser.getId().equals(id)){
+            mv.addObject("errorMessage","Não é possível excluir o usuário logado");
+            List<Usuario> usuarios = usuarioRepository.findAll();
+            mv.addObject("usuarios", usuarios);
+            mv.setViewName("usuario-listar");
+            
+        }
+        else{
+            usuarioRepository.deleteById(id);
+            mv.setViewName("redirect:listar");
+        }
         return mv;    
     }
 
@@ -105,17 +140,5 @@ public class UsuarioController {
         mv.setViewName("redirect:/login");
         return mv;
     }    
-    
-/*
-    @RequestMapping(value = {"/editar-usuario"}, method = RequestMethod.POST)
-    public ModelAndView realizaEditar (@RequestParam(value = "id", required = true) Long id, Usuario usuario)
-    {
-        ModelAndView mv = new ModelAndView();
-        usuario.setId(id);
-        usuarioRepository.save(usuario);
-        mv.addObject("usuario", usuario);
-        mv.setViewName("editar-usuario");
-        return mv;
-    }  */
     
 }

@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import br.ufjf.dcc193.acervosystem.helper.Helper;
 import br.ufjf.dcc193.acervosystem.model.Anotacao;
 import br.ufjf.dcc193.acervosystem.model.Etiqueta;
 import br.ufjf.dcc193.acervosystem.model.Item;
@@ -39,6 +40,7 @@ public class DemoApplication {
 
 	public static void popularDadosPrincipais(){
 		Usuario u = new Usuario("Usuario 1","descricao usuario 1","mail@mail.com","1234");
+		Usuario u2 = new Usuario("Usuario 2","descricao usuario 1","jjsfandre@gmail.com","1234");
 		
 		Item i = new Item("Obra 1");
 		Item i2 = new Item("Documento 1");
@@ -69,6 +71,7 @@ public class DemoApplication {
 		
 		
 		usuarioRepository.save(u);		
+		usuarioRepository.save(u2);		
 		anotacaoRepository.save(a);
 		anotacaoRepository.save(a2);
 		anotacaoRepository.save(a3);

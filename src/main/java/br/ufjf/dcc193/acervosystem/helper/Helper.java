@@ -12,7 +12,7 @@ import br.ufjf.dcc193.acervosystem.repository.UsuarioRepository;
 public class Helper {
 
 
-    public static final String usuarioLogadoCookieName = "loggedUser";
+    public static final String usuarioLogadoCookieName = "loggedUserAcervoSystem";
 
     public static final String getDataAtualFormatada(){
 
