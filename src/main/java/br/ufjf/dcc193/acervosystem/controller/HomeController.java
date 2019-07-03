@@ -40,7 +40,7 @@ public class HomeController {
         else
             mv.setViewName("index-nologged");
 
-        mv.addObject("objetos",listarTodosOsObjetos());
+        //mv.addObject("objetos",listarTodosOsObjetos());
         return mv;
     }
 
