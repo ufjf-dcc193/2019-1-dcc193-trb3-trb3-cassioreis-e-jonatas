@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <em th:replace="_shared/style :: style"></em>
-  <title>Etiquetas do Item</title>
+  <title>Etiquetas do vínculo</title>
 </head>
 
 
@@ -18,10 +18,10 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-            <button class="btn btn-primary my-2" onclick="associarEtiquetasItem()" id="btnAssociarEtiquetas"><i class="fa fa-plus"></i>Associar etiquetas marcadas</button>
-        <input type="hidden" class="form-control" id="idItem" th:value="${idItem}"/>
+            <button class="btn btn-primary my-2" onclick="associarEtiquetasVinculo()" id="btnAssociarEtiquetas"><i class="fa fa-plus"></i>Associar etiquetas marcadas</button>
+        <input type="hidden" class="form-control" id="idVinculo" th:value="${idVinculo}"/>
       <strong class="error" th:text="${errorMessage}" ></strong>
-      <table class="table" id="etiqueta-item-listar-table">
+      <table class="table" id="etiqueta-vinculo-listar-table">
         <thead>
           <tr>
             <th></th>

@@ -30,6 +30,7 @@
             <th>Item Destino</th>
             <th>Editar</th>
             <th>Excluir</th>
+            <th>Associar etiquetas</th>
 
           </tr>
         </thead>
@@ -43,7 +44,10 @@
               </a></td>
             <td><a th:href="@{'/../vinculo/excluir?id=' + ${vinculo.id}}">
                 <i class="fa fa-trash" aria-hidden="true"> Excluir</i>
-              </a></td>
+              </a></td>              
+            <td><a th:href="@{'/../vinculo/etiquetas?id=' + ${vinculo.id}}">
+              <i class="fa fa-tags" aria-hidden="true"> Etiquetas</i>
+            </a></td>
           </tr>
         </tbody>
       </table>

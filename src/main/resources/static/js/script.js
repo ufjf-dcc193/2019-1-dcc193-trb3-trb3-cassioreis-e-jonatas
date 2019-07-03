@@ -1,8 +1,13 @@
 
 
 
-function associarEtiquetas(){
+function associarEtiquetasItem(){
     var checks = $("#etiqueta-item-listar-table").find("input[type='checkbox']:checked");
+    if (checks.length==0){
+        alert("Selecione ao menos um item");
+        return;
+    }
+
     var listIdsEtiquetas = [];
     checks.each(function(index,el){
         listIdsEtiquetas.push(parseInt(el.value));
@@ -10,24 +15,38 @@ function associarEtiquetas(){
     
     var idItem = parseInt($('#idItem').val());
     
-    var post= {
+    var param = {
         idItem: idItem,
         listIdsEtiquetas: listIdsEtiquetas
-    } 
-
-    var reqRow=[];
-    reqRow.push(1);
-    reqRow.push(2);
-    reqRow.push(7);
+    }
+    var url = "/item/associar-etiquetas";
+    associarEtiquetas(param,url);
+}
 
 
+function associarEtiquetasVinculo(){
+    var checks = $("#etiqueta-vinculo-listar-table").find("input[type='checkbox']:checked");
+    var listIdsEtiquetas = [];
+    checks.each(function(index,el){
+        listIdsEtiquetas.push(parseInt(el.value));
+    });
+    
+    var idVinculo = parseInt($('#idVinculo').val());
+    
+    var param = {
+        idVinculo: idVinculo,
+        listIdsEtiquetas: listIdsEtiquetas
+    }
+    var url = "/vinculo/associar-etiquetas";
+    associarEtiquetas(param,url);
+}
+
+function associarEtiquetas(param, url){
+    
     $.ajax({
         type: "POST",
-        url: "/item/associar-etiquetas",
-        data: {
-            idItem: idItem,
-            listIdsEtiquetas: listIdsEtiquetas
-        },
+        url: url,
+        data: param,
         timeout: 600000,
         success: function (data) {
 
@@ -39,39 +58,10 @@ function associarEtiquetas(){
 
         },
         error: function (e) {
-
             if (e.responseText=="Success")
                 alert("Associação realizada com sucesso")
             else
                 alert(e.responseText);
-
         }
-    });
-    
-} 
-/*
-function associarEtiquetas(){
-    param ={
-        teste : "hahaha"
-    };
-    $.ajax({
-        type: "GET%",
-        contentType: "application/json",
-        url: "/item/associar-etiquetas2",
-        data: param,
-        dataType: 'json',
-        cache: false,
-        timeout: 600000,
-        success: function (data) {
-
-            console.info(data);
-
-        },
-        error: function (e) {
-
-            console.info(e);
-
-        }
-    });
+    }); 
 }
-*/

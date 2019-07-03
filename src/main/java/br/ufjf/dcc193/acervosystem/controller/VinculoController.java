@@ -40,6 +40,8 @@ public class VinculoController {
     private VinculoRepository vinculoRepository;
     @Autowired
     private ItemRepository itemRepository;
+    @Autowired
+    private EtiquetaRepository etiquetaRepository;
 
 
     
@@ -110,6 +112,47 @@ public class VinculoController {
         mv.addObject("id", itemId);
         mv.setViewName("redirect:listar");
         return mv;
+    }
+
+    
+
+    @RequestMapping(value = { "/etiquetas" }, method = RequestMethod.GET)
+    public ModelAndView etiquetas(@RequestParam("id") Long id) {
+        ModelAndView mv = new ModelAndView();
+        Vinculo currentVinculo = vinculoRepository.getOne(id);
+        List<Etiqueta> etiquetas = currentVinculo.getEtiquetas();
+        List<Etiqueta> allEtiquetas = etiquetaRepository.findAll();
+
+        for (Etiqueta e : allEtiquetas) {
+            if (etiquetas.indexOf(e) != -1)
+                e.setChecked();
+        }
+
+        mv.addObject("etiquetas", allEtiquetas);
+        mv.addObject("idVinculo", id);
+        mv.setViewName("etiqueta-vinculo-listar");
+        return mv;
+    }
+
+    @RequestMapping(value = "/associar-etiquetas", method = { RequestMethod.GET, RequestMethod.POST }, produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String associarEtiquetas(@RequestParam(value="idVinculo") Long idVinculo, @RequestParam(value="listIdsEtiquetas[]") List<Long> listIdsEtiquetas) {
+
+        try{
+
+            Vinculo vinculo = vinculoRepository.getOne(idVinculo);
+            List<Etiqueta> etiquetas = vinculo.getEtiquetas();
+            etiquetas.clear();
+            for (Long idEtiqueta: listIdsEtiquetas) {
+                etiquetas.add(etiquetaRepository.getOne(idEtiqueta));
+            }
+            vinculoRepository.save(vinculo);
+            
+            return "Success";
+        }catch(Exception e){
+            
+            return e.getMessage();
+        }
     }
 
 }
