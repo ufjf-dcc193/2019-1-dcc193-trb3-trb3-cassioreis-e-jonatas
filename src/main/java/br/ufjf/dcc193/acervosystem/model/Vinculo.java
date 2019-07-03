@@ -3,10 +3,12 @@ package br.ufjf.dcc193.acervosystem.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -28,8 +30,10 @@ public class Vinculo {
     @OneToMany(mappedBy = "vinculo")
     private List<Anotacao> anotacoes;
 
-    @ManyToMany
-    @JoinTable(name = "etiquetasVinculo")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "etiqueta_vinculo", 
+                joinColumns = {@JoinColumn(name="vinculo_id")},
+                inverseJoinColumns = {@JoinColumn(name="etiqueta_id")})
     private List<Etiqueta> etiquetas;
 
     public Long getId() {

@@ -31,6 +31,7 @@
             <th>Url</th>
             <th>Editar</th>
             <th>Excluir</th>
+            <th>Itens</th>
 
           </tr>
         </thead>
@@ -45,6 +46,9 @@
                 </a></td>
                 <td><a th:href="@{'/../etiqueta/excluir?id=' + ${etiqueta.id}}">
                     <i class="fa fa-trash" aria-hidden="true"> Excluir</i>
+                </a></td>
+                <td><a th:href="@{'/../etiqueta/itens?id=' + ${etiqueta.id}}">
+                    <i class="fa fa-list-ul" aria-hidden="true"> Listar</i>
                 </a></td>
             </tr>
         </tbody>

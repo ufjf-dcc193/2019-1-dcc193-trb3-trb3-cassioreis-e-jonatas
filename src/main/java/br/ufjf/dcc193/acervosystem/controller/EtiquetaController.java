@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.ufjf.dcc193.acervosystem.model.Etiqueta;
+import br.ufjf.dcc193.acervosystem.model.Item;
 import br.ufjf.dcc193.acervosystem.repository.EtiquetaRepository;
 
 
@@ -88,6 +89,19 @@ public class EtiquetaController {
         etiquetaRepository.deleteById(id);
         mv.setViewName("redirect:listar");
         return mv;    
+    }
+    
+
+    @RequestMapping(value = {"/itens"}, method = RequestMethod.GET)
+    public ModelAndView listarItensPorEtiqueta (@RequestParam("id") Long id)
+    {
+        ModelAndView mv = new ModelAndView();
+        Etiqueta etiqueta = etiquetaRepository.getOne(id);
+        List<Item> itens = etiqueta.getItens();
+        mv.addObject("itens", itens);
+        mv.addObject("etiquetaTitulo", etiqueta.getTitulo());
+        mv.setViewName("item-etiqueta-listar");
+        return mv;
     }
 
 }

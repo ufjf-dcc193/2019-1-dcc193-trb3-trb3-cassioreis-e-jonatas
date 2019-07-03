@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <em th:replace="_shared/style :: style"></em>
+  <title>Itens</title>
+</head>
+
+
+
+<body>
+  <nav th:replace="_shared/menu :: menu"></nav>
+
+<h2 >Itens associados à etiqueta <em th:text="${etiquetaTitulo}"></em></h2>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="item: ${itens}" th:object="${item}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{titulo}"></td>
+              </a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div th:replace="_shared/scripts :: scripts"></div>
+</body>
+
+
+</html>

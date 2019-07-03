@@ -2,6 +2,8 @@ package br.ufjf.dcc193.acervosystem.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,14 +25,13 @@ public class Etiqueta {
     @NotBlank(message="Url obrigatória")
     private String url;
 
-/*
-    @ManyToMany
-    @JoinTable(name = "itens")
+
+    
+    @ManyToMany(mappedBy = "etiquetas", cascade = CascadeType.ALL)  
     private List<Item> itens;
 
-    @ManyToMany
-    @JoinTable(name = "vinculos")
-    private List<Vinculo> vinculos; */
+    @ManyToMany(mappedBy = "etiquetas", cascade = CascadeType.ALL)  
+    private List<Vinculo> vinculos; 
 
     //Atributo auxiliar para checklist
     private boolean checked;
@@ -105,7 +106,7 @@ public class Etiqueta {
     public void setUrl(String url) {
         this.url = url;
     }
-/*
+
     public List<Item> getItens() {
         return itens;
     }
@@ -129,7 +130,7 @@ public class Etiqueta {
     
     public void addItem(Item i){
         itens.add(i);
-    }*/
+    }
 
     @Override
     public String toString() {
