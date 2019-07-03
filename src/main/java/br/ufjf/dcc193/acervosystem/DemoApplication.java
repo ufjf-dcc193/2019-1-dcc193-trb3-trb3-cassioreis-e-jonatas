@@ -33,7 +33,7 @@ public class DemoApplication {
 		itemRepository = ctx.getBean(ItemRepository.class);
 		etiquetaRepository = ctx.getBean(EtiquetaRepository.class);
 		anotacaoRepository = ctx.getBean(AnotacaoRepository.class);
-		popularDadosPrincipais();
+		//popularDadosPrincipais();
 	}
 
 	public static void popularDadosPrincipais(){
