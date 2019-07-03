@@ -1,20 +1,14 @@
 package br.ufjf.dcc193.acervosystem.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,13 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.ufjf.dcc193.acervosystem.model.Etiqueta;
 import br.ufjf.dcc193.acervosystem.model.Item;
-import br.ufjf.dcc193.acervosystem.model.Vinculo;
 import br.ufjf.dcc193.acervosystem.repository.EtiquetaRepository;
 import br.ufjf.dcc193.acervosystem.repository.ItemRepository;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/item")
