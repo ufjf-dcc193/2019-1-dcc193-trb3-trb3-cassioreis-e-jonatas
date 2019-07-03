@@ -25,7 +25,7 @@ public class Anotacao {
 
    
     @DateTimeFormat(pattern = "dd-MM-YY")
-    private String dataDeInicio = null;
+    private String dataDeInclusao = null;
     @DateTimeFormat(pattern = "dd-MM-YY")
     private String dataDeAtualizacao = null;
  
@@ -41,11 +41,11 @@ public class Anotacao {
     public Anotacao() {
     }
 
-    public Anotacao(String titulo, String descricao, String url, String dataDeInicio) {
+    public Anotacao(String titulo, String descricao, String url, String dataDeInclusao) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
-        this.dataDeInicio = dataDeInicio;
+        this.dataDeInclusao = dataDeInclusao;
         atualizaDataDeAtualizacao();
     }
 
@@ -65,12 +65,12 @@ public class Anotacao {
         this.url = url;
     }
 
-    public String getDataDeInicio() {
-        return dataDeInicio;
+    public String getDataDeInclusao() {
+        return dataDeInclusao;
     }
 
-    public void setDataDeInicio(String dataDeInicio) {
-        this.dataDeInicio = dataDeInicio;
+    public void setDataDeInclusao(String dataDeInclusao) {
+        this.dataDeInclusao = dataDeInclusao;
     }
 
     public Long getId() {
@@ -123,7 +123,7 @@ public class Anotacao {
 
     @Override
     public String toString() {
-        return "Anotacao [dataDeAtualizacao=" + dataDeAtualizacao + ", dataDeInicio=" + dataDeInicio + ", descricao="
+        return "Anotacao [dataDeAtualizacao=" + dataDeAtualizacao + ", dataDeInclusao=" + dataDeInclusao + ", descricao="
                 + descricao + ", id=" + id + "]";
     }
   
