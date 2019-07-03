@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <em th:replace="_shared/style :: style"></em>
+  <title>Etiquetas do Item</title>
+</head>
+
+
+
+<body>
+  <nav th:replace="_shared/menu :: menu"></nav>
+
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+            <button class="btn btn-primary my-2" onclick="associarEtiquetas()" id="btnAssociarEtiquetas"><i class="fa fa-plus"></i>Associar etiquetas marcadas</button>
+        <input type="hidden" class="form-control" id="idItem" th:value="${idItem}"/>
+      <strong class="error" th:text="${errorMessage}" ></strong>
+      <table class="table" id="etiqueta-item-listar-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Descrição</th>
+            <th>Url</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            <tr th:each="etiqueta: ${etiquetas}" th:object="${etiqueta}">
+                <td ><input th:value="*{id}"  th:checked="*{checked}"type="checkbox"/> </td>
+                <td th:text="*{id}"></td>
+                <td th:text="*{titulo}"></td>
+                <td th:text="*{descricao}"></td>
+                <td th:text="*{url}"></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div th:replace="_shared/scripts :: scripts"></div>
+</body>
+
+
+</html>

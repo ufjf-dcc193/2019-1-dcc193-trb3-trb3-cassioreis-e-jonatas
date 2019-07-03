@@ -29,6 +29,8 @@
             <th>Título</th>
             <th>Editar</th>
             <th>Excluir</th>
+            <th>Associar etiquetas</th>
+            <th>Vincular items</th>
 
           </tr>
         </thead>
@@ -41,6 +43,12 @@
               </a></td>
             <td><a th:href="@{'/../item/excluir?id=' + ${item.id}}">
                 <i class="fa fa-trash" aria-hidden="true"> Excluir</i>
+              </a></td>
+            <td><a th:href="@{'/../item/etiquetas?id=' + ${item.id}}">
+                <i class="fa fa-tags" aria-hidden="true"> Etiquetas</i>
+              </a></td>
+            <td><a th:href="@{'/../item/vinculos?id=' + ${item.id}}">
+                <i class="fa fa-link" aria-hidden="true"> Vínculos</i>
               </a></td>
           </tr>
         </tbody>

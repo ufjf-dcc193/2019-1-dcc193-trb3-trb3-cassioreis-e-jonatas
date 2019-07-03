@@ -29,7 +29,7 @@ public class Vinculo {
     private List<Anotacao> anotacoes;
 
     @ManyToMany
-    @JoinTable(name = "etiquetas")
+    @JoinTable(name = "etiquetasVinculo")
     private List<Etiqueta> etiquetas;
 
     public Long getId() {

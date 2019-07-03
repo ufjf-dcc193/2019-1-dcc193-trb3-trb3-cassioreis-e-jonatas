@@ -23,16 +23,29 @@ public class Etiqueta {
     @NotBlank(message="Url obrigatória")
     private String url;
 
-
+/*
     @ManyToMany
     @JoinTable(name = "itens")
     private List<Item> itens;
 
     @ManyToMany
     @JoinTable(name = "vinculos")
-    private List<Vinculo> vinculos;
+    private List<Vinculo> vinculos; */
 
+    //Atributo auxiliar para checklist
+    private boolean checked;
 
+    public boolean getChecked(){
+        return this.checked;
+    }
+
+    public void setChecked(){
+        this.checked = true;
+    }
+
+    public void setUnChecked(){
+        this.checked = false;
+    }
 
     public Etiqueta(Long id, String titulo, String descricao, String url) {
         this.id = id;
@@ -45,21 +58,21 @@ public class Etiqueta {
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
-        instanciarListas();
+        //instanciarListas();
     }
 
     public Etiqueta() {
     }
     public Etiqueta(boolean instanciarListas) {
         if (instanciarListas){
-            instanciarListas();
+          //  instanciarListas();
         }
     }
-
+/*
     private void instanciarListas(){
         itens = new ArrayList<Item>();
             vinculos = new ArrayList<Vinculo>();
-    } 
+    } */
 
     public Long getId() {
         return id;
@@ -92,7 +105,7 @@ public class Etiqueta {
     public void setUrl(String url) {
         this.url = url;
     }
-
+/*
     public List<Item> getItens() {
         return itens;
     }
@@ -116,7 +129,7 @@ public class Etiqueta {
     
     public void addItem(Item i){
         itens.add(i);
-    }
+    }*/
 
     @Override
     public String toString() {

@@ -25,7 +25,7 @@ public class Item {
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)  
     private List<Anotacao> anotacoes;
     @ManyToMany
-    @JoinTable(name = "etiquetas")
+    @JoinTable(name = "etiquetasItem")
     private List<Etiqueta> etiquetas;
     @OneToMany(mappedBy = "itemOrigem", cascade = CascadeType.ALL)
     private List<Vinculo> vinculosOrigem;

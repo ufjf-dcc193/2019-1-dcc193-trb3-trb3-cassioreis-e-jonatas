@@ -24,9 +24,9 @@ public class Usuario {
     private String email;
     @NotBlank(message="Senha obrigatória")
     private String password;
-
+/*
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Set<Anotacao> anotacoes;
+    private Set<Anotacao> anotacoes; */
 
 
     public Usuario (String email, String password)
@@ -96,14 +96,14 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-
+/*
     public Set<Anotacao> getAnotacoes() {
         return anotacoes;
     }
 
     public void setAnotacoes(Set<Anotacao> anotacoes) {
         this.anotacoes = anotacoes;
-    }
+    } */
 
     @Override
     public String toString() {
