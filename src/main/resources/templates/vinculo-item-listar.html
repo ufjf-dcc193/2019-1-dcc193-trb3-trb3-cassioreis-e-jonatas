@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <em th:replace="_shared/style :: style"></em>
-  <title>Itens</title>
+  <title>Vinculos</title>
 </head>
 
 
@@ -18,37 +18,31 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-        <a th:href="@{/item/novo}"> 
-            <button class="btn btn-primary my-2" id="teste"><i class="fa fa-plus"></i>Adicionar item</button>
+            <a th:href="@{'/../vinculo/novo?itemId=' + ${itemId}}">
+            <button class="btn btn-primary my-2" id="teste"><i class="fa fa-plus"></i>Adicionar vínculo a partir deste Item</button>
         </a>
       <strong class="error" th:text="${errorMessage}" ></strong>
       <table class="table">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Título</th>
+            <th>Item Origem</th>
+            <th>Item Destino</th>
             <th>Editar</th>
             <th>Excluir</th>
-            <th>Associar etiquetas</th>
-            <th>Vincular items</th>
 
           </tr>
         </thead>
         <tbody>
-          <tr th:each="item: ${itens}" th:object="${item}">
+          <tr th:each="vinculo: ${vinculos}" th:object="${vinculo}">
             <td th:text="*{id}"></td>
-            <td th:text="*{titulo}"></td>
-            <td><a th:href="@{'/../item/detalhe?id=' + ${item.id}}">
+            <td th:text="*{itemOrigem}"></td>
+            <td th:text="*{itemDestino}"></td>
+            <td><a th:href="@{'/../vinculo/detalhe?id=' + ${vinculo.id}}">
                 <i class="fa fa-pencil" aria-hidden="true"> Editar</i>
               </a></td>
-            <td><a th:href="@{'/../item/excluir?id=' + ${item.id}}">
+            <td><a th:href="@{'/../vinculo/excluir?id=' + ${vinculo.id}}">
                 <i class="fa fa-trash" aria-hidden="true"> Excluir</i>
-              </a></td>
-            <td><a th:href="@{'/../item/etiquetas?id=' + ${item.id}}">
-                <i class="fa fa-tags" aria-hidden="true"> Etiquetas</i>
-              </a></td>
-            <td><a th:href="@{'/../vinculo/listar?id=' + ${item.id}}">
-                <i class="fa fa-link" aria-hidden="true"> Vínculos</i>
               </a></td>
           </tr>
         </tbody>

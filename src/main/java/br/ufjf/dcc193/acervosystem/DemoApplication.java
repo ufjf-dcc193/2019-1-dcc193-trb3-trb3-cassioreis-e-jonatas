@@ -41,7 +41,9 @@ public class DemoApplication {
 		Usuario u2 = new Usuario("Usuario 2","descricao usuario 1","jjsfandre@gmail.com","1234");
 		
 		Item i = new Item("Obra 1");
+		Item i3 = new Item("Obra 2");
 		Item i2 = new Item("Documento 1");
+		Item i4 = new Item("Documento 2");
 		
 		Etiqueta e = new Etiqueta("Etiqueta 1", "Descrição etiqueta 1", "url.com.br");
 		Etiqueta e2 = new Etiqueta("Etiqueta 2", "Descrição etiqueta 2", "url2.com.br");
@@ -78,6 +80,8 @@ public class DemoApplication {
 		etiquetaRepository.save(e3);
 		itemRepository.save(i);
 		itemRepository.save(i2); 
+		itemRepository.save(i3); 
+		itemRepository.save(i4); 
 		
 	}
 

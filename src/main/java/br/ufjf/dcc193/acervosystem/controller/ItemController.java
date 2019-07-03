@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.ufjf.dcc193.acervosystem.model.Etiqueta;
 import br.ufjf.dcc193.acervosystem.model.Item;
+import br.ufjf.dcc193.acervosystem.model.Vinculo;
 import br.ufjf.dcc193.acervosystem.repository.EtiquetaRepository;
 import br.ufjf.dcc193.acervosystem.repository.ItemRepository;
 
@@ -140,6 +141,9 @@ public class ItemController {
 
 
     }
+
+    
+
 
 
 
