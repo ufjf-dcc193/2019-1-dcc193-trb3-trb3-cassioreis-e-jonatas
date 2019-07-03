@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <em th:replace="_shared/style :: style"></em>
+  <title>Vinculos</title>
+</head>
+
+
+
+<body>
+  <nav th:replace="_shared/menu :: menu"></nav>
+
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+            <a th:href="@{'/../anotacao/novo-vinculo?idVinculo=' + ${idVinculo}}">
+            <button class="btn btn-primary my-2" id="teste"><i class="fa fa-plus"></i>Adicionar anotação a partir deste Vínculo</button>
+        </a>
+      <strong class="error" th:text="${errorMessage}" ></strong>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Data de inclusão</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="anotacao: ${anotacoes}" th:object="${anotacao}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{titulo}"></td>
+            <td th:text="*{descricao}"></td>
+            <td th:text="*{dataDeInclusao}"></td>
+            <td><a th:href="@{'/../anotacao/detalhe?id=' + ${anotacao.id}}">
+                <i class="fa fa-pencil" aria-hidden="true"> Editar</i>
+              </a></td>
+            <td><a th:href="@{'/../anotacao/excluir?id=' + ${anotacao.id}}">
+                <i class="fa fa-trash" aria-hidden="true"> Excluir</i>
+              </a></td>   
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div th:replace="_shared/scripts :: scripts"></div>
+</body>
+
+
+</html>

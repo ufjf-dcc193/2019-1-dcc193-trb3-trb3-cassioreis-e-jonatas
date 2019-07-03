@@ -63,7 +63,7 @@ public class AnotacaoController {
         List<Anotacao> anotacoes = currentItem.getAnotacoes();
 
         mv.addObject("anotacoes", anotacoes);
-        mv.addObject("vinculoId", id);
+        mv.addObject("idVinculo", id);
         mv.setViewName("anotacao-vinculo-listar");
         return mv;
     }
@@ -137,7 +137,7 @@ public class AnotacaoController {
             id = current.getItem().getId();
             mv.setViewName("redirect:listar-item");
         }else {
-            id = current.getItem().getId();
+            id = current.getVinculo().getId();
             mv.setViewName("redirect:listar-vinculo");
         }
         mv.addObject("id", id);
@@ -154,7 +154,7 @@ public class AnotacaoController {
             idLink = current.getItem().getId();
             mv.setViewName("redirect:listar-item");
         }else {
-            idLink = current.getItem().getId();
+            idLink = current.getVinculo().getId();
             mv.setViewName("redirect:listar-vinculo");
         }
         mv.addObject("id", idLink);

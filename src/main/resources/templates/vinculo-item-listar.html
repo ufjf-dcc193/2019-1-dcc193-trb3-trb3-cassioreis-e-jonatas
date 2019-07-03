@@ -31,6 +31,7 @@
             <th>Editar</th>
             <th>Excluir</th>
             <th>Associar etiquetas</th>
+            <th>Anotações</th>
 
           </tr>
         </thead>
@@ -47,6 +48,9 @@
               </a></td>              
             <td><a th:href="@{'/../vinculo/etiquetas?id=' + ${vinculo.id}}">
               <i class="fa fa-tags" aria-hidden="true"> Etiquetas</i>
+            </a></td>
+            <td><a th:href="@{'/../anotacao/listar-vinculo?id=' + ${vinculo.id}}">
+              <i class="fa fa-book" aria-hidden="true"> Anotações</i>
             </a></td>
           </tr>
         </tbody>
